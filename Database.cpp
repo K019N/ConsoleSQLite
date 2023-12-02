@@ -58,12 +58,18 @@ void Database::select(string command) {
     const char* select = command.c_str();
 
     auto exec = sqlite3_exec(db, select, callback, 0, &errMsg);
-
-    
 }
 
 void Database::deleteData(string ID, string table) {
     ID = "DELETE FROM" + table + "WHERE ID = " + ID;
     const char* query = ID.c_str();
     sqlite3_prepare(db, query, strlen(query), &stmt, NULL);
+}
+
+void Database::updateData(string tabelName, string ID, string column, string newData) {
+    string temp = "UPDATE " + tabelName + " SET " + column + "=" 
+        + newData + " WHERE ID=" + ID;
+    const char* update = temp.c_str();
+
+    auto exec = sqlite3_exec(db, update, callback, 0, &errMsg);
 }

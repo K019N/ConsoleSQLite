@@ -27,4 +27,5 @@ public:
 	void addData(string commandLine1, string commandLine2);
 	void select(string command);
 	void deleteData(string ID, string table);
+	void updateData(string TabelName, string ID, string column, string newData);
 };

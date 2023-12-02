@@ -18,12 +18,9 @@ int main(int argc, char* argv[]) {
     while (operation) {
         cout << "Choose what you want to do:\n" << "1 - create new table\n"
             << "2 - add data to table\n" << "3 - remove data from table\n"
-            << "4 - make a request\n" << "0 - close database\n";
+            << "4 - make a request\n" << "5 - update data in tabel\n" 
+            << "0 - close database\n";
         cin >> operation;
-
-        if (operation == 0) {
-            break;
-        }
 
         if (operation == 1) { // create new table
             cout << "Input tabel name: ";
@@ -53,6 +50,22 @@ int main(int argc, char* argv[]) {
             getline(cin, input);
             getline(cin, input);  // ??!?!!!!???!!?!!!!??!!!!!!!?????
             db.select(input);
+        }
+        else if (operation == 5) {  // update row
+            string ID, column, newData;
+            cout << "Input table name: ";
+            cin >> input;
+            cout << "Input person's ID: ";
+            cin >> ID;
+            cout << "Input column name what you want to change: ";
+            cin >> column;
+            cout << "Input new data: ";
+            cin >> newData;
+
+            db.updateData(input, ID, column, newData);
+        }
+        else if (operation == 0) {
+            break;
         }
     }
 
